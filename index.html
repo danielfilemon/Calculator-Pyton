@@ -1,94 +1,39 @@
-<!DOCTYPE html>
-<html>
+def add(x, y):
+    return x + y
 
-<head>
-    <title>Simple Calculator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
+def subtract(x, y):
+    return x - y
 
-        .container {
-            width: 200px;
-            padding: 20px;
-            background-color: lightgray;
-            margin: 0 auto;
-            margin-top: 100px;
-            border-radius: 5px;
-        }
+def multiply(x, y):
+    return x * y
 
-        h1 {
-            text-align: center;
-        }
+def divide(x, y):
+    if y == 0:
+        return "Error! Division by zero."
+    else:
+        return x / y
 
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
+print("Select operation:")
+print("1. Addition")
+print("2. Subtraction")
+print("3. Multiplication")
+print("4. Division")
 
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #d7a21d;
-            color: white;
-            font-size: 18px;
-            border: none;
-            cursor: pointer;
-        }
+while True:
+    choice = input("Enter choice (1/2/3/4): ")
 
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
-</head>
+    if choice in ('1', '2', '3', '4'):
+        num1 = float(input("Enter first number: "))
+        num2 = float(input("Enter second number: "))
 
-<body>
-    <div class="container">
-        <h1>Simple Calculator</h1>
-        <input type="number" id="num1" placeholder="Enter number 1">
-        <input type="number" id="num2" placeholder="Enter number 2">
-        <button onclick="calculate()">Calculate</button>
-        <p id="result"></p>
-    </div>
-
-    <script>
-        function calculate() {
-            var num1 = parseFloat(document.getElementById('num1').value);
-            var num2 = parseFloat(document.getElementById('num2').value);
-            var result = document.getElementById('result');
-
-            if (isNaN(num1) || isNaN(num2)) {
-                result.innerHTML = "Invalid input";
-                return;
-            }
-
-            var option = prompt("Select an operation:\n1. Addition\n2. Subtraction\n3. Multiplication\n4. Division");
-
-            switch (option) {
-                case '1':
-                    result.innerHTML = "Result: " + (num1 + num2);
-                    break;
-                case '2':
-                    result.innerHTML = "Result: " + (num1 - num2);
-                    break;
-                case '3':
-                    result.innerHTML = "Result: " + (num1 * num2);
-                    break;
-                case '4':
-                    if (num2 === 0) {
-                        result.innerHTML = "Error: Cannot divide by zero";
-                    } else {
-                        result.innerHTML = "Result: " + (num1 / num2);
-                    }
-                    break;
-                default:
-                    result.innerHTML = "Invalid option";
-                    break;
-            }
-        }
-    </script>
-</body>
-
-</html>
+        if choice == '1':
+            print("Result:", add(num1, num2))
+        elif choice == '2':
+            print("Result:", subtract(num1, num2))
+        elif choice == '3':
+            print("Result:", multiply(num1, num2))
+        elif choice == '4':
+            print("Result:", divide(num1, num2))
+        break
+    else:
+        print("Invalid input!")
